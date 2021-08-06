@@ -20,5 +20,5 @@ jobs:
           docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
           docker pull asciidoctor/docker-asciidoctor
           docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor
-          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/github-action-cache-docker-builds || true
+          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
   
