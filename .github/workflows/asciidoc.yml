@@ -23,4 +23,4 @@ jobs:
 #          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
  
       - run: 
-          ./ci/pull-asciidoctor.sh
+          ./ci/pull-asciidoctor.sh ${{ secrets.GITHUB_TOKEN }}
