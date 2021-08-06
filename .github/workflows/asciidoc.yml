@@ -19,6 +19,8 @@ jobs:
           echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
           docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
           docker pull asciidoctor/docker-asciidoctor
+          echo docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor
           docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor
+          echo docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
           docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
   
