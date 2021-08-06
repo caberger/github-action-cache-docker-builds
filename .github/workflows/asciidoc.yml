@@ -15,15 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: | 
-          echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
-          echo "---- existing images ---"
-          docker image ls --all docker.pkg.github.com/$GITHUB_REPOSITORY
-          echo "----"
-          docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
-          docker pull asciidoctor/docker-asciidoctor:latest
-          echo docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest
-          docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest
-          echo docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
-          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
-  
+#      - run: | 
+#          echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+#          docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
+#          docker pull asciidoctor/docker-asciidoctor:latest
+#          docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest
+#          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor:latest || true
+ 
+      - run: 
+          ./ci/pull-asciidoctor.sh
