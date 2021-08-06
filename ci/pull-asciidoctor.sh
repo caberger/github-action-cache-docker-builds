@@ -12,3 +12,4 @@ else
     echo "tagging asciidoctor"
     docker tag ghcr.io/$GITHUB_REPOSITORY/asciidoctor:latest asciidoctor/docker-asciidoctor:latest
 fi
+rm -rf ~/.docker/config.json.
