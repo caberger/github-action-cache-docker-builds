@@ -1,0 +1,15 @@
+= Docker Caching Instructions
+:author: Christian Aberger
+:email: c.aberger@htl-leonding.ac.at
+:doctitle: Docker Caching Instructions
+:version-label: 0.0.1
+:hide-uri-scheme:
+:stylesheet: adoc-github.css
+:toc: left
+:source-highlighter: highlight.js
+:highlightjs-languages: powershell
+
+## General
+
+We want to build this with asciidoc very fast. So we use the github registry to cache to docker build.
+

@@ -1,0 +1,24 @@
+name: build asciidoc document
+
+on:
+  push:
+    branches: [ master ]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  asciidoc:
+    name: build asciidoc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - run: | 
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login docker.pkg.github.com -u $GITHUB_ACTOR --password-stdin
+          docker pull docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor || true
+          docker pull asciidoctor/docker-asciidoctor
+          docker tag asciidoctor/docker-asciidoctor docker.pkg.github.com/$GITHUB_REPOSITORY/asciidoctor
+          docker push docker.pkg.github.com/$GITHUB_REPOSITORY/github-action-cache-docker-builds || true
+  
